@@ -318,6 +318,30 @@
             perspective: 1000px;
         }
 
+        .mix-tier-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .mix-tier-wrapper .pricing-card {
+            max-width: 350px;
+            width: 100%;
+        }
+
+        .mix-tier {
+            background: linear-gradient(180deg, rgba(6, 182, 212, 0.08) 0%, rgba(59, 130, 246, 0.04) 100%);
+            border-color: rgba(6, 182, 212, 0.3);
+        }
+
+        .mix-tier .pricing-tier {
+            color: var(--accent-cyan);
+        }
+
+        .mix-tier::before {
+            background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+        }
+
         .pricing-card {
             background: var(--bg-glass);
             backdrop-filter: blur(40px);
@@ -474,7 +498,8 @@
         /* Contact Section */
         .contact {
             text-align: center;
-            padding-bottom: 4rem;
+            padding-top: 4rem;
+            padding-bottom: 8rem;
         }
 
         .contact-box {
@@ -795,6 +820,20 @@
                 <div class="pricing-best">Full Ownership</div>
                 <a href="https://drive.google.com/file/d/1trDQa4S_7Cg3mv-KRmlbW8WSG-vzowmS/view?usp=sharing"
                     target="_blank" class="pricing-btn"><span>Get License</span></a>
+            </div>
+        </div>
+
+        <!-- Mix Tier -->
+        <div class="mix-tier-wrapper reveal reveal-delay-1">
+            <div class="pricing-card mix-tier" data-tilt>
+                <div class="pricing-tier">Custom</div>
+                <h3 class="pricing-name">Mix Tier</h3>
+                <div class="pricing-price">Custom</div>
+                <div class="pricing-conversion">Tailored to your needs</div>
+                <p class="pricing-description">Need mixing, mastering, or a custom package? Let's discuss your project
+                    and create something unique.</p>
+                <div class="pricing-best">Custom Solutions</div>
+                <a href="#contact" class="pricing-btn"><span>Contact Me</span></a>
             </div>
         </div>
     </section>

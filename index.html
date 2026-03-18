@@ -1,131 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>nickeno | Producer from Sweden</title>
-    <meta name="description"
-        content="nickeno - Music producer specializing in Trap, Supertrap, Hyperpop, and Experimental beats. Includes mixing services">
+    <title>Nickeno | Producer from Sweden</title>
+    <meta name="description" content="Nickeno - Music producer from Sweden specializing in Trap, Supertrap, Hyperpop, and Experimental beats.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Knewave&display=swap" rel="stylesheet">
     <style>
-        *,
-        *::before,
-        *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            /* Light Theme (Gradient matched to your image) */
+            --bg-primary: #a3d84a;
+            --text-primary: #111111;
+            --text-secondary: rgba(17, 17, 17, 0.7);
+            --glass-bg: rgba(255, 255, 255, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.4);
+            --card-bg: rgba(255, 255, 255, 0.25);
+            --card-border: rgba(255, 255, 255, 0.5);
+            --pill-bg: #111111;
+            --pill-text: #ffffff;
+            --nav-text: #111111;
+            --blob-1: #a084ba; /* Purple */
+            --blob-2: #d2d84a; /* Yellow-green */
+            --blob-3: #7ac142; /* Deep green */
+            --accent: #8cc63f;
         }
 
-        :root {
+        [data-theme="dark"] {
+            /* Dark Theme */
             --bg-primary: #0a0a0a;
-            --bg-secondary: #111111;
-            --bg-glass: rgba(255, 255, 255, 0.03);
-            --bg-glass-hover: rgba(255, 255, 255, 0.08);
-            --border-glass: rgba(255, 255, 255, 0.08);
-            --border-glass-hover: rgba(255, 255, 255, 0.2);
             --text-primary: #ffffff;
             --text-secondary: rgba(255, 255, 255, 0.6);
-            --text-tertiary: rgba(255, 255, 255, 0.4);
-            --accent-purple: #a855f7;
-            --accent-pink: #ec4899;
-            --accent-blue: #3b82f6;
-            --accent-cyan: #06b6d4;
-            --glow-purple: rgba(168, 85, 247, 0.5);
-            --glow-pink: rgba(236, 72, 153, 0.5);
+            --glass-bg: rgba(30, 30, 30, 0.4);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --card-bg: rgba(20, 20, 20, 0.6);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --pill-bg: #ffffff;
+            --pill-text: #111111;
+            --nav-text: #ffffff;
+            --blob-1: #4c1d95;
+            --blob-2: #064e3b;
+            --blob-3: #831843;
+            --accent: #a855f7;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--bg-primary);
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+            transition: background-color 0.5s ease, color 0.5s ease;
         }
 
-        /* Fixed Gradient Canvas Background */
-        #gradient-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            z-index: 0;
-            opacity: 0.6;
+        /* --- BACKGROUND BLOBS --- */
+        .mesh-bg {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: -1; overflow: hidden; filter: blur(100px);
             pointer-events: none;
         }
+        .blob {
+            position: absolute; border-radius: 50%; opacity: 0.8;
+            animation: float 20s infinite alternate ease-in-out;
+            transition: background-color 0.5s ease;
+        }
+        .blob-1 { width: 60vw; height: 60vw; background: var(--blob-1); top: -20%; left: -10%; }
+        .blob-2 { width: 50vw; height: 50vw; background: var(--blob-2); bottom: -10%; right: -10%; animation-delay: -5s; }
+        .blob-3 { width: 55vw; height: 55vw; background: var(--blob-3); top: 30%; left: 40%; animation-delay: -10s; }
 
-        /* Navigation - Hidden initially, slides down */
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(5vw, 10vh) scale(1.1); }
+        }
+
+        /* --- TRUE LIQUID GLASS NAV --- */
         nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            position: fixed; top: 1.5rem; left: 50%; transform: translateX(-50%);
+            background: var(--glass-bg);
+            backdrop-filter: blur(40px) saturate(180%);
+            -webkit-backdrop-filter: blur(40px) saturate(180%);
+            border: 1px solid var(--glass-border);
+            border-radius: 999px;
+            padding: 0.5rem;
+            display: flex; align-items: center; gap: 0.25rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1), inset 0 2px 10px rgba(255,255,255,0.2);
             z-index: 1000;
-            padding: 1rem 2rem;
-            background: rgba(10, 10, 10, 0.7);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border-glass);
-            transform: translateY(-100%);
-            opacity: 0;
-            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+            overflow: hidden;
+        }
+        nav::before {
+            content: ''; position: absolute; top: 2px; left: 5%; right: 5%; height: 40%;
+            background: linear-gradient(180deg, rgba(255,255,255,0.3) 0%, transparent 100%);
+            border-radius: 999px; pointer-events: none; z-index: 2;
+        }
+        nav::after {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(circle 80px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.3), transparent);
+            mix-blend-mode: overlay; pointer-events: none; z-index: 2;
         }
 
-        nav.visible {
-            transform: translateY(0);
-            opacity: 1;
+        .nav-item {
+            position: relative; z-index: 3;
+            padding: 0.6rem 1.25rem;
+            color: var(--nav-text);
+            text-decoration: none; font-weight: 500; font-size: 0.875rem;
+            display: flex; align-items: center; gap: 0.5rem;
+            cursor: pointer; transition: transform 0.2s;
+        }
+        .nav-item:active { transform: scale(0.92); }
+        .nav-item svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+        .active-pill {
+            position: absolute; top: 0.5rem; bottom: 0.5rem; left: 0;
+            background: var(--pill-bg); border-radius: 999px;
+            z-index: 1; pointer-events: none;
+            transition: all 0.5s cubic-bezier(0.34, 1.2, 0.64, 1);
         }
 
-        nav .nav-container {
-            max-width: 1400px;
+        .nav-divider {
+            width: 1px; height: 20px; background: var(--glass-border);
+            margin: 0 0.25rem; z-index: 3;
+        }
+
+        .theme-toggle {
+            background: none; border: none; padding: 0.6rem;
+            color: var(--nav-text); cursor: pointer; z-index: 3;
+            border-radius: 50%; transition: transform 0.2s, background 0.3s;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .theme-toggle:hover { background: rgba(255,255,255,0.1); }
+        .theme-toggle:active { transform: scale(0.92); }
+        .theme-toggle svg { width: 18px; height: 18px; }
+        
+        [data-theme="dark"] .moon-icon { display: none; }
+        [data-theme="light"] .sun-icon { display: none; }
+
+        /* --- LAYOUT & TYPOGRAPHY --- */
+        section {
+            padding: 8rem 2rem;
+            max-width: 1200px;
             margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            position: relative;
         }
 
-        nav .logo {
-            font-size: 1.25rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        nav ul {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-        }
-
-        nav a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.875rem;
-            font-weight: 500;
-            transition: color 0.3s ease, transform 0.3s ease;
-            letter-spacing: 0.01em;
-            display: inline-block;
-        }
-
-        nav a:hover {
+        .funky-title {
+            font-family: 'Knewave', system-ui;
+            font-size: clamp(3rem, 10vw, 5rem);
             color: var(--text-primary);
-            transform: translateY(-2px);
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
         }
 
-        /* Hero Section */
+        /* Hero Section - Matched to Image */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -133,966 +163,316 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 2rem;
-            position: relative;
-            overflow: hidden;
         }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            will-change: transform;
-        }
-
-        .hero h1 {
-            font-size: clamp(4rem, 15vw, 12rem);
-            font-weight: 800;
-            letter-spacing: -0.04em;
+        .hero-title {
+            font-size: clamp(5rem, 15vw, 12rem);
             line-height: 0.9;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.7) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            opacity: 0;
-            transform: translateY(80px) scale(0.9);
-            animation: heroTitleIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.3s;
+            transform: rotate(-5deg);
+            text-shadow: 6px 6px 0px rgba(0,0,0,0.15);
+            margin-bottom: 2rem;
         }
-
+        [data-theme="dark"] .hero-title { text-shadow: 6px 6px 0px rgba(255,255,255,0.1); }
+        
         .hero-subtitle {
-            overflow: hidden;
-        }
-
-        .hero-subtitle span {
-            display: block;
-            font-size: clamp(1rem, 2.5vw, 1.5rem);
-            color: var(--text-secondary);
-            font-weight: 400;
-            letter-spacing: 0.02em;
-            opacity: 0;
-            transform: translateY(40px);
-        }
-
-        .hero-subtitle span:nth-child(1) {
-            animation: heroSubtitleIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.8s;
-        }
-
-        .hero-subtitle span:nth-child(2) {
-            animation: heroSubtitleIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards 1s;
-        }
-
-        @keyframes heroTitleIn {
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        @keyframes heroSubtitleIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero-scroll {
-            position: absolute;
-            bottom: 3rem;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-            opacity: 0;
-            animation: scrollIndicatorIn 1s ease forwards 1.5s;
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-
-        .hero-scroll.hidden {
-            opacity: 0 !important;
-            transform: translateX(-50%) translateY(20px);
-            pointer-events: none;
-        }
-
-        .hero-scroll span {
-            font-size: 0.75rem;
-            color: var(--text-tertiary);
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-        }
-
-        .scroll-indicator {
-            width: 24px;
-            height: 40px;
-            border: 2px solid var(--border-glass);
+            background: #111111;
+            color: #8cc63f;
+            padding: 0.75rem 1.5rem;
             border-radius: 12px;
-            position: relative;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            font-weight: 600;
+            transform: rotate(1deg);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            display: inline-block;
         }
-
-        .scroll-indicator::before {
-            content: '';
-            position: absolute;
-            top: 6px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 4px;
-            height: 8px;
-            background: var(--accent-purple);
-            border-radius: 2px;
-            animation: scrollBounce 2s infinite;
-        }
-
-        @keyframes scrollIndicatorIn {
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes scrollBounce {
-
-            0%,
-            100% {
-                transform: translateX(-50%) translateY(0);
-                opacity: 1;
-            }
-
-            50% {
-                transform: translateX(-50%) translateY(10px);
-                opacity: 0.3;
-            }
-        }
-
-        /* Sections */
-        section {
-            padding: 8rem 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .section-title {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.8) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+        [data-theme="dark"] .hero-subtitle { background: #ffffff; color: #111111; }
 
         /* About Section */
-        .about {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
+        .about { text-align: center; }
         .about p {
             font-size: clamp(1.125rem, 2vw, 1.5rem);
             color: var(--text-secondary);
             max-width: 800px;
-            line-height: 1.8;
-            font-weight: 400;
+            margin: 0 auto;
+            font-weight: 500;
         }
 
-        /* Pricing Section */
-        .pricing {
-            text-align: center;
-        }
-
-        .pricing-subtitle {
-            color: var(--text-tertiary);
-            font-size: 1rem;
-            margin-bottom: 4rem;
-        }
-
+        /* Pricing Grid */
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
             margin-top: 3rem;
-            perspective: 1000px;
         }
-
-        .mix-tier-wrapper {
-            display: flex;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-
-        .mix-tier-wrapper .pricing-card {
-            max-width: 350px;
-            width: 100%;
-        }
-
-        .mix-tier {
-            background: linear-gradient(180deg, rgba(6, 182, 212, 0.08) 0%, rgba(59, 130, 246, 0.04) 100%);
-            border-color: rgba(6, 182, 212, 0.3);
-        }
-
-        .mix-tier .pricing-tier {
-            color: var(--accent-cyan);
-        }
-
-        .mix-tier::before {
-            background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
-        }
-
-        .pricing-card {
-            background: var(--bg-glass);
-            backdrop-filter: blur(40px);
-            -webkit-backdrop-filter: blur(40px);
-            border: 1px solid var(--border-glass);
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--card-border);
             border-radius: 24px;
             padding: 2.5rem 2rem;
-            text-align: left;
-            transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            transform-style: preserve-3d;
-            will-change: transform, box-shadow;
-        }
-
-        .pricing-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transition: background 0.5s ease;
-        }
-
-        .pricing-card::after {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            border-radius: 26px;
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink), var(--accent-cyan));
-            opacity: 0;
-            z-index: -1;
-            transition: opacity 0.5s ease;
-        }
-
-        .pricing-card:hover {
-            background: var(--bg-glass-hover);
-            border-color: var(--border-glass-hover);
-            box-shadow:
-                0 25px 50px -12px rgba(0, 0, 0, 0.5),
-                0 0 60px -15px var(--glow-purple);
-        }
-
-        .pricing-card:hover::after {
-            opacity: 0.15;
-        }
-
-        .pricing-card.featured {
-            background: linear-gradient(180deg, rgba(168, 85, 247, 0.1) 0%, rgba(236, 72, 153, 0.05) 100%);
-            border-color: rgba(168, 85, 247, 0.3);
-        }
-
-        .pricing-card.featured::before {
-            background: linear-gradient(90deg, transparent, var(--accent-purple), transparent);
-        }
-
-        .pricing-tier {
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--accent-purple);
-            margin-bottom: 1rem;
-        }
-
-        .pricing-name {
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            margin-bottom: 0.5rem;
-        }
-
-        .pricing-price {
-            font-size: 2.5rem;
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            margin-bottom: 0.25rem;
-        }
-
-        .pricing-conversion {
-            font-size: 0.875rem;
-            color: var(--text-tertiary);
-            margin-bottom: 1.5rem;
-        }
-
-        .pricing-description {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            line-height: 1.7;
-            margin-bottom: 2rem;
-            min-height: 80px;
-        }
-
-        .pricing-best {
-            display: inline-block;
-            font-size: 0.75rem;
-            font-weight: 500;
-            color: var(--accent-cyan);
-            background: rgba(6, 182, 212, 0.1);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            margin-bottom: 1.5rem;
-        }
-
-        .pricing-btn {
-            display: block;
-            width: 100%;
-            padding: 1rem 1.5rem;
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
-            border: none;
-            border-radius: 14px;
-            color: white;
-            font-size: 0.875rem;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            text-align: center;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
             position: relative;
             overflow: hidden;
         }
-
-        .pricing-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
-            opacity: 0;
-            transition: opacity 0.4s ease;
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
-
-        .pricing-btn span {
-            position: relative;
-            z-index: 1;
+        .card.featured {
+            border: 2px solid var(--pill-bg);
+            transform: scale(1.02);
         }
-
-        .pricing-btn:hover {
-            transform: scale(1.03) translateY(-2px);
-            box-shadow:
-                0 0 30px var(--glow-purple),
-                0 0 60px var(--glow-pink),
-                0 20px 40px -10px rgba(0, 0, 0, 0.5);
+        .card.featured:hover { transform: translateY(-8px) scale(1.02); }
+        
+        .tier-name { font-weight: 700; font-size: 1.25rem; margin-bottom: 0.5rem; }
+        .tier-price { font-family: 'Knewave', system-ui; font-size: 2.5rem; line-height: 1; margin-bottom: 0.25rem; }
+        .tier-conv { font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1.5rem; }
+        .tier-desc { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 2rem; min-height: 60px; }
+        
+        .btn {
+            display: block; width: 100%; padding: 1rem;
+            background: var(--pill-bg); color: var(--pill-text);
+            text-align: center; text-decoration: none;
+            border-radius: 14px; font-weight: 600; font-size: 0.875rem;
+            transition: transform 0.2s; border: none; cursor: pointer;
         }
-
-        .pricing-btn:hover::before {
-            opacity: 1;
-        }
+        .btn:active { transform: scale(0.95); }
 
         /* Contact Section */
-        .contact {
-            text-align: center;
-            padding-top: 4rem;
-            padding-bottom: 8rem;
-        }
-
+        .contact { text-align: center; }
         .contact-box {
-            max-width: 500px;
-            margin: 2rem auto 0;
-            background: var(--bg-glass);
-            backdrop-filter: blur(40px);
-            -webkit-backdrop-filter: blur(40px);
-            border: 1px solid var(--border-glass);
-            border-radius: 20px;
-            padding: 2rem;
+            background: var(--card-bg); backdrop-filter: blur(20px);
+            border: 1px solid var(--card-border); border-radius: 24px;
+            padding: 3rem 2rem; max-width: 600px; margin: 0 auto;
         }
-
-        .contact-box p {
-            color: var(--text-secondary);
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-buttons {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-        }
-
         .contact-email {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            padding: 1rem 2rem;
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
-            border-radius: 14px;
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            max-width: 100%;
-            word-break: break-all;
-            text-align: center;
+            display: inline-flex; align-items: center; justify-content: center; gap: 0.75rem;
+            padding: 1rem 2rem; background: var(--pill-bg); color: var(--pill-text);
+            border-radius: 14px; text-decoration: none; font-weight: 600;
+            margin: 1.5rem 0 1rem; transition: transform 0.2s; word-break: break-all;
         }
-
-        .contact-email:hover {
-            transform: scale(1.03) translateY(-2px);
-            box-shadow: 0 0 30px var(--glow-purple), 0 0 60px var(--glow-pink);
-        }
-
-        .contact-email svg {
-            width: 20px;
-            height: 20px;
-            flex-shrink: 0;
-        }
-
+        .contact-email:active { transform: scale(0.95); }
+        
         .copy-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            background: var(--bg-glass);
-            border: 1px solid var(--border-glass);
-            border-radius: 10px;
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: inherit;
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.75rem 1.5rem; background: transparent;
+            border: 1px solid var(--text-primary); border-radius: 10px;
+            color: var(--text-primary); font-weight: 600; cursor: pointer;
+            transition: all 0.2s;
         }
-
-        .copy-btn:hover {
-            background: var(--bg-glass-hover);
-            border-color: var(--border-glass-hover);
-            color: var(--text-primary);
-        }
-
-        .copy-btn.copied {
-            background: rgba(34, 197, 94, 0.2);
-            border-color: rgba(34, 197, 94, 0.5);
-            color: #22c55e;
-        }
-
-        .copy-btn svg {
-            width: 16px;
-            height: 16px;
-        }
+        .copy-btn:hover { background: var(--text-primary); color: var(--bg-primary); }
+        .copy-btn.copied { background: #22c55e; border-color: #22c55e; color: #fff; }
 
         /* Footer */
         footer {
-            padding: 4rem 2rem;
-            text-align: center;
-            border-top: 1px solid var(--border-glass);
-            background: var(--bg-secondary);
-            position: relative;
-            z-index: 1;
+            padding: 4rem 2rem; text-align: center;
+            border-top: 1px solid var(--glass-border);
         }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
+        .social-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem; }
+        .social-links a {
+            color: var(--text-primary); text-decoration: none; font-weight: 600;
+            display: flex; align-items: center; gap: 0.5rem; transition: transform 0.2s;
         }
+        .social-links a:hover { transform: translateY(-3px); }
+        .social-links svg { width: 20px; height: 20px; }
+        .copyright { color: var(--text-secondary); font-size: 0.875rem; }
 
-        .footer-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.875rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .footer-links a:hover {
-            color: var(--accent-purple);
-            transform: translateY(-3px);
-        }
-
-        .footer-links svg {
-            width: 18px;
-            height: 18px;
-            transition: transform 0.3s ease;
-        }
-
-        .footer-links a:hover svg {
-            transform: scale(1.2);
-        }
-
-        .footer-copyright {
-            color: var(--text-tertiary);
-            font-size: 0.75rem;
-        }
-
-        /* Enhanced Scroll Animations */
-        .reveal {
-            opacity: 0;
-            transform: translateY(60px) scale(0.95);
-            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-
-        .reveal-delay-1 {
-            transition-delay: 0.1s;
-        }
-
-        .reveal-delay-2 {
-            transition-delay: 0.2s;
-        }
-
-        .reveal-delay-3 {
-            transition-delay: 0.3s;
-        }
-
-        .reveal-delay-4 {
-            transition-delay: 0.4s;
-        }
-
-        /* Mobile Responsiveness */
-        @media (max-width: 1200px) {
-            .pricing-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
+        /* Scroll Reveal Utility */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        
         @media (max-width: 768px) {
-            nav ul {
-                gap: 1.5rem;
-            }
-
-            nav a {
-                font-size: 0.8rem;
-            }
-
-            section {
-                padding: 5rem 1.5rem;
-            }
-
-            .pricing-grid {
-                grid-template-columns: 1fr;
-                gap: 1.25rem;
-            }
-
-            .pricing-card {
-                padding: 2rem 1.5rem;
-            }
-
-            .pricing-description {
-                min-height: auto;
-            }
-
-            .footer-links {
-                flex-direction: column;
-                gap: 1.5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            nav {
-                padding: 1rem;
-            }
-
-            nav ul {
-                gap: 1rem;
-            }
-
-            .hero h1 {
-                font-size: 3.5rem;
-            }
-
-            .contact-box {
-                padding: 1.5rem 1rem;
-                margin: 2rem 1rem 0;
-            }
-
-            .contact-email {
-                padding: 1rem 1.25rem;
-                font-size: 0.875rem;
-            }
+            nav { width: 90%; justify-content: space-between; padding: 0.5rem 1rem; }
+            .nav-text { display: none; } /* Icon only on mobile */
+            .nav-item { padding: 0.75rem; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .card.featured { transform: scale(1); }
+            .card.featured:hover { transform: translateY(-4px); }
         }
     </style>
 </head>
+<body data-theme="light">
 
-<body>
-    <!-- Fixed Animated Background -->
-    <canvas id="gradient-canvas"></canvas>
+    <div class="mesh-bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
 
-    <!-- Navigation -->
-    <nav id="nav">
-        <div class="nav-container">
-            <div class="logo">NICKENO</div>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
+    <nav id="glass-nav">
+        <div class="active-pill" id="active-pill"></div>
+        
+        <a href="#hero" class="nav-item active">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+            <span class="nav-text">Home</span>
+        </a>
+        <a href="#about" class="nav-item">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            <span class="nav-text">About</span>
+        </a>
+        <a href="#pricing" class="nav-item">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+            <span class="nav-text">Licenses</span>
+        </a>
+        <a href="#contact" class="nav-item">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <span class="nav-text">Contact</span>
+        </a>
+
+        <div class="nav-divider"></div>
+
+        <button class="theme-toggle" id="theme-btn" aria-label="Toggle Theme">
+            <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
-        <div class="hero-content" id="hero-content">
-            <h1>nickeno</h1>
-            <div class="hero-subtitle">
-                <span>Producer from Sweden.</span>
-                <span>Trap / Supertrap / Hyperpop / Experimental.</span>
-            </div>
-        </div>
-        <div class="hero-scroll" id="hero-scroll">
-            <span>Scroll</span>
-            <div class="scroll-indicator"></div>
-        </div>
+    <section id="hero" class="hero">
+        <h1 class="funky-title hero-title reveal">Nickeno</h1>
+        <div class="hero-subtitle reveal">Producer from Sweden. Trap / Experimental.</div>
     </section>
 
-    <!-- About Section -->
-    <section class="about" id="about">
-        <h2 class="section-title reveal">About</h2>
-        <p class="reveal reveal-delay-1">A producer from Sweden with a passion for creating unique thumping beats.
-            Specializing in Supertrap, Hip-Hop, and experimental genres.</p>
+    <section id="about" class="about">
+        <h2 class="funky-title reveal">About</h2>
+        <p class="reveal">A producer from Sweden with a passion for creating unique thumping beats. Specializing in Supertrap, Hip-Hop, and experimental genres.</p>
     </section>
 
-    <!-- Pricing Section -->
-    <section class="pricing" id="pricing">
-        <h2 class="section-title reveal">Pricing</h2>
-        <p class="pricing-subtitle reveal reveal-delay-1">Choose the license that fits your project</p>
-
+    <section id="pricing">
+        <h2 class="funky-title reveal" style="text-align: center;">Licenses</h2>
         <div class="pricing-grid">
-            <!-- Basic Lease -->
-            <div class="pricing-card reveal reveal-delay-1" data-tilt>
-                <div class="pricing-tier">Tier 1</div>
-                <h3 class="pricing-name">Basic Lease</h3>
-                <div class="pricing-price">200 SEK</div>
-                <div class="pricing-conversion">$19 / €18</div>
-                <p class="pricing-description">Basic MP3/WAV, 100k Streams, No Radio.</p>
-                <div class="pricing-best">Best for Demos</div>
-                <a href="https://drive.google.com/file/d/1DfeCZ1HPTZvdZWc6zuhTkkx3Wx3GS-uo/view?usp=sharing"
-                    target="_blank" class="pricing-btn"><span>Get License</span></a>
+            <div class="card reveal">
+                <div class="tier-name">Basic Lease</div>
+                <div class="tier-price">200 SEK</div>
+                <div class="tier-conv">$19 / €18</div>
+                <p class="tier-desc">Basic MP3/WAV, 100k Streams, No Radio.</p>
+                <a href="https://drive.google.com/file/d/1DfeCZ1HPTZvdZWc6zuhTkkx3Wx3GS-uo/view?usp=sharing" target="_blank" class="btn">Get License</a>
+            </div>
+            
+            <div class="card reveal">
+                <div class="tier-name">Pro Lease</div>
+                <div class="tier-price">300 SEK</div>
+                <div class="tier-conv">$28 / €26</div>
+                <p class="tier-desc">High-Quality WAV, 500k Streams, Local Radio.</p>
+                <a href="https://drive.google.com/file/d/1hgqH0SbIk5bnJ4zuAZ2IMtaYbWJPgnXW/view?usp=sharing" target="_blank" class="btn">Get License</a>
             </div>
 
-            <!-- Pro Lease -->
-            <div class="pricing-card reveal reveal-delay-2" data-tilt>
-                <div class="pricing-tier">Tier 2</div>
-                <h3 class="pricing-name">Pro Lease</h3>
-                <div class="pricing-price">300 SEK</div>
-                <div class="pricing-conversion">$28 / €26</div>
-                <p class="pricing-description">High-Quality WAV, 500k Streams, Local Radio.</p>
-                <div class="pricing-best">Best for Spotify/Apple Music</div>
-                <a href="https://drive.google.com/file/d/1hgqH0SbIk5bnJ4zuAZ2IMtaYbWJPgnXW/view?usp=sharing"
-                    target="_blank" class="pricing-btn"><span>Get License</span></a>
+            <div class="card featured reveal">
+                <div class="tier-name">Unlimited Lease</div>
+                <div class="tier-price">400 SEK</div>
+                <div class="tier-conv">$37 / €35</div>
+                <p class="tier-desc">WAV + Stems (ZIP), Unlimited Streams, National Radio.</p>
+                <a href="https://drive.google.com/file/d/1Qunyk_wFU9yz_0p9nkSPkmr3tepgc4Md/view?usp=sharing" target="_blank" class="btn">Get License</a>
             </div>
 
-            <!-- Unlimited Lease -->
-            <div class="pricing-card featured reveal reveal-delay-3" data-tilt>
-                <div class="pricing-tier">Tier 3</div>
-                <h3 class="pricing-name">Unlimited Lease</h3>
-                <div class="pricing-price">400 SEK</div>
-                <div class="pricing-conversion">$37 / €35</div>
-                <p class="pricing-description">WAV + Stems (ZIP), Unlimited Streams, National Radio.</p>
-                <div class="pricing-best">Best for Albums</div>
-                <a href="https://drive.google.com/file/d/1Qunyk_wFU9yz_0p9nkSPkmr3tepgc4Md/view?usp=sharing"
-                    target="_blank" class="pricing-btn"><span>Get License</span></a>
+            <div class="card reveal">
+                <div class="tier-name">Exclusive Rights</div>
+                <div class="tier-price">500 SEK</div>
+                <div class="tier-conv">$46 / €44</div>
+                <p class="tier-desc">Full Ownership Transfer. Beat removed from store. Contract included.</p>
+                <a href="https://drive.google.com/file/d/1trDQa4S_7Cg3mv-KRmlbW8WSG-vzowmS/view?usp=sharing" target="_blank" class="btn">Get License</a>
             </div>
-
-            <!-- Exclusive Rights -->
-            <div class="pricing-card reveal reveal-delay-4" data-tilt>
-                <div class="pricing-tier">Tier 4</div>
-                <h3 class="pricing-name">Exclusive Rights</h3>
-                <div class="pricing-price">500 SEK</div>
-                <div class="pricing-conversion">$46 / €44</div>
-                <p class="pricing-description">Full Ownership Transfer. Beat removed from store. Contract included.</p>
-                <div class="pricing-best">Full Ownership</div>
-                <a href="https://drive.google.com/file/d/1trDQa4S_7Cg3mv-KRmlbW8WSG-vzowmS/view?usp=sharing"
-                    target="_blank" class="pricing-btn"><span>Get License</span></a>
-            </div>
-        </div>
-
-        <!-- Mix Tier -->
-        <div class="mix-tier-wrapper reveal reveal-delay-1">
-            <div class="pricing-card mix-tier" data-tilt>
-                <div class="pricing-tier">Custom</div>
-                <h3 class="pricing-name">Mix Tier</h3>
-                <div class="pricing-price">Custom</div>
-                <div class="pricing-conversion">Tailored to your needs</div>
-                <p class="pricing-description">Need mixing, mastering, or a custom package? Let's discuss your project
-                    and create something unique.</p>
-                <div class="pricing-best">Custom Solutions</div>
-                <a href="#contact" class="pricing-btn"><span>Contact Me</span></a>
+            
+            <div class="card reveal" style="grid-column: 1 / -1; max-width: 500px; margin: 0 auto;">
+                <div class="tier-name">Custom Mix Tier</div>
+                <div class="tier-price">Custom</div>
+                <div class="tier-conv">Tailored to your needs</div>
+                <p class="tier-desc">Need mixing, mastering, or a custom package? Let's discuss your project and create something unique.</p>
+                <a href="#contact" class="btn">Contact Me</a>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <h2 class="section-title reveal">Contact</h2>
-        <div class="contact-box reveal reveal-delay-1">
-            <p>Got a question or want to work together? Drop me an email.</p>
-            <div class="contact-buttons">
-                <a href="mailto:nickenoproduction@gmail.com" class="contact-email">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <rect x="2" y="4" width="20" height="16" rx="2" />
-                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-                    </svg>
-                    nickenoproduction@gmail.com
-                </a>
-                <button class="copy-btn" id="copy-email-btn" onclick="copyEmail()">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-                    </svg>
-                    <span>Copy Email</span>
-                </button>
-            </div>
+    <section id="contact" class="contact">
+        <h2 class="funky-title reveal">Contact</h2>
+        <div class="contact-box reveal">
+            <p style="color: var(--text-secondary); font-weight: 500;">Got a question or want to work together? Drop me an email.</p>
+            <a href="mailto:nickenoproduction@gmail.com" class="contact-email">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                nickenoproduction@gmail.com
+            </a><br>
+            <button class="copy-btn" id="copy-btn" onclick="copyEmail()">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>Copy Email</span>
+            </button>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
-        <div class="footer-links">
+        <div class="social-links reveal">
             <a href="https://discord.com" target="_blank">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                        d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z" />
-                </svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
                 nickeno
             </a>
             <a href="https://soundcloud.com/nickeno" target="_blank">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                        d="M1.175 12.225c-.051 0-.094.046-.101.1l-.233 2.154.233 2.105c.007.058.05.098.101.098.05 0 .09-.04.099-.098l.255-2.105-.27-2.154c-.009-.06-.052-.1-.1-.1m-.945-.924c-.059 0-.1.047-.109.108l-.18 3.078.18 2.978c.009.06.05.108.109.108.059 0 .1-.048.108-.108l.2-2.978-.2-3.078c-.008-.06-.049-.108-.108-.108m1.937.027c-.067 0-.12.054-.127.12l-.195 2.031.195 2.021c.007.066.06.12.127.12.067 0 .12-.054.127-.12l.22-2.021-.22-2.031c-.007-.066-.06-.12-.127-.12m.989-.155c-.074 0-.134.06-.141.134l-.176 2.186.176 2.148c.007.074.067.134.141.134.073 0 .133-.06.14-.134l.2-2.148-.2-2.186c-.007-.074-.067-.134-.14-.134m1.02-.285c-.082 0-.148.066-.155.148l-.157 2.471.157 2.397c.007.082.073.148.155.148.081 0 .147-.066.154-.148l.18-2.397-.18-2.471c-.007-.082-.073-.148-.154-.148m1.026-.362c-.09 0-.162.072-.169.162l-.137 2.833.137 2.635c.007.09.079.162.169.162.089 0 .161-.072.168-.162l.157-2.635-.157-2.833c-.007-.09-.079-.162-.168-.162m1.032-.42c-.097 0-.175.078-.182.175l-.118 3.253.118 2.861c.007.097.085.175.182.175.097 0 .175-.078.182-.175l.133-2.861-.133-3.253c-.007-.097-.085-.175-.182-.175m1.04-.473c-.104 0-.188.084-.195.188l-.098 3.726.098 3.083c.007.104.091.188.195.188.103 0 .187-.084.194-.188l.111-3.083-.111-3.726c-.007-.104-.091-.188-.194-.188m1.045-.51c-.111 0-.201.09-.208.201l-.078 4.236.078 3.292c.007.111.097.201.208.201.11 0 .2-.09.207-.201l.089-3.292-.089-4.236c-.007-.111-.097-.201-.207-.201m1.071-.055c-.118 0-.214.096-.221.214l-.059 4.291.059 3.344c.007.118.103.214.221.214.117 0 .213-.096.22-.214l.067-3.344-.067-4.291c-.007-.118-.103-.214-.22-.214m1.064-.14c-.125 0-.228.103-.234.228l-.04 4.431.04 3.385c.006.125.109.228.234.228.124 0 .227-.103.233-.228l.045-3.385-.045-4.431c-.006-.125-.109-.228-.233-.228m1.138-.189c-.132 0-.24.108-.247.24l-.02 4.62.02 3.41c.007.132.115.24.247.24.132 0 .24-.108.246-.24l.023-3.41-.023-4.62c-.006-.132-.114-.24-.246-.24m1.082.018c-.14 0-.254.114-.26.254v.007l-.007 4.341.007 3.427c.006.14.12.254.26.254.14 0 .254-.114.26-.254l.008-3.427v-.007l-.008-4.334c-.006-.14-.12-.254-.26-.254m1.14-.073c-.147 0-.267.12-.273.267l-.007 4.414.007 3.448c.006.147.126.267.273.267.146 0 .266-.12.273-.267l.007-3.448-.007-4.414c-.007-.147-.127-.267-.273-.267m1.089.249c-.155 0-.28.126-.287.28l-.007 4.165.007 3.455c.007.154.132.28.287.28.154 0 .28-.126.286-.28l.007-3.455-.007-4.165c-.006-.154-.132-.28-.286-.28m1.19-.293c-.162 0-.294.132-.3.294l-.007 4.458.007 3.462c.006.162.138.294.3.294.161 0 .293-.132.299-.294l.007-3.462-.007-4.458c-.006-.162-.138-.294-.299-.294m6.12 1.213c-.54 0-1.053.108-1.521.303a5.75 5.75 0 0 0-5.671-4.823c-.36 0-.72.04-1.068.117-.127.03-.17.091-.17.18v9.478c.006.094.076.17.168.182h8.262c1.47 0 2.662-1.208 2.662-2.695 0-1.488-1.192-2.695-2.662-2.695" />
-                </svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.175 12.225c-.051 0-.094.046-.101.1l-.233 2.154.233 2.105c.007.058.05.098.101.098.05 0 .09-.04.099-.098l.255-2.105-.27-2.154c-.009-.06-.052-.1-.1-.1m-.945-.924c-.059 0-.1.047-.109.108l-.18 3.078.18 2.978c.009.06.05.108.109.108.059 0 .1-.048.108-.108l.2-2.978-.2-3.078c-.008-.06-.049-.108-.108-.108m1.937.027c-.067 0-.12.054-.127.12l-.195 2.031.195 2.021c.007.066.06.12.127.12.067 0 .12-.054.127-.12l.22-2.021-.22-2.031c-.007-.066-.06-.12-.127-.12m6.12 1.213c-.54 0-1.053.108-1.521.303a5.75 5.75 0 0 0-5.671-4.823c-.36 0-.72.04-1.068.117-.127.03-.17.091-.17.18v9.478c.006.094.076.17.168.182h8.262c1.47 0 2.662-1.208 2.662-2.695 0-1.488-1.192-2.695-2.662-2.695"/></svg>
                 SoundCloud
             </a>
         </div>
-        <p class="footer-copyright">© 2025 nickeno. All rights reserved.</p>
+        <p class="copyright">© 2026 nickeno. All rights reserved.</p>
     </footer>
 
     <script>
-        // ============================================
-        // GRADIENT CANVAS ANIMATION
-        // ============================================
-        class GradientAnimation {
-            constructor() {
-                this.canvas = document.getElementById('gradient-canvas');
-                this.ctx = this.canvas.getContext('2d');
-                this.colors = [
-                    { r: 168, g: 85, b: 247 },   // Purple
-                    { r: 236, g: 72, b: 153 },   // Pink
-                    { r: 59, g: 130, b: 246 },   // Blue
-                    { r: 6, g: 182, b: 212 }     // Cyan
-                ];
-                this.blobs = [];
-                this.mouse = { x: 0, y: 0 };
-                this.init();
-            }
+        // --- Navigation Pill & Active State Logic ---
+        const navItems = document.querySelectorAll('.nav-item');
+        const activePill = document.getElementById('active-pill');
+        const sections = document.querySelectorAll('section');
 
-            init() {
-                this.resize();
-                window.addEventListener('resize', () => this.resize());
-                window.addEventListener('mousemove', (e) => {
-                    this.mouse.x = e.clientX;
-                    this.mouse.y = e.clientY;
-                });
-                this.createBlobs();
-                this.animate();
-            }
-
-            resize() {
-                this.canvas.width = window.innerWidth;
-                this.canvas.height = window.innerHeight;
-            }
-
-            createBlobs() {
-                for (let i = 0; i < 5; i++) {
-                    this.blobs.push({
-                        x: Math.random() * this.canvas.width,
-                        y: Math.random() * this.canvas.height,
-                        radius: Math.random() * 400 + 250,
-                        color: this.colors[i % this.colors.length],
-                        vx: (Math.random() - 0.5) * 0.4,
-                        vy: (Math.random() - 0.5) * 0.4,
-                        originalVx: (Math.random() - 0.5) * 0.4,
-                        originalVy: (Math.random() - 0.5) * 0.4
-                    });
-                }
-            }
-
-            animate() {
-                this.ctx.fillStyle = '#0a0a0a';
-                this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-
-                this.blobs.forEach((blob, index) => {
-                    // Mouse interaction - blobs gently repel from mouse
-                    const dx = blob.x - this.mouse.x;
-                    const dy = blob.y - this.mouse.y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-
-                    if (dist < 400) {
-                        const force = (400 - dist) / 400 * 0.02;
-                        blob.vx += dx * force * 0.01;
-                        blob.vy += dy * force * 0.01;
-                    }
-
-                    // Return to original velocity
-                    blob.vx += (blob.originalVx - blob.vx) * 0.01;
-                    blob.vy += (blob.originalVy - blob.vy) * 0.01;
-
-                    blob.x += blob.vx;
-                    blob.y += blob.vy;
-
-                    if (blob.x < -blob.radius) blob.x = this.canvas.width + blob.radius;
-                    if (blob.x > this.canvas.width + blob.radius) blob.x = -blob.radius;
-                    if (blob.y < -blob.radius) blob.y = this.canvas.height + blob.radius;
-                    if (blob.y > this.canvas.height + blob.radius) blob.y = -blob.radius;
-
-                    const gradient = this.ctx.createRadialGradient(
-                        blob.x, blob.y, 0,
-                        blob.x, blob.y, blob.radius
-                    );
-                    gradient.addColorStop(0, `rgba(${blob.color.r}, ${blob.color.g}, ${blob.color.b}, 0.5)`);
-                    gradient.addColorStop(0.5, `rgba(${blob.color.r}, ${blob.color.g}, ${blob.color.b}, 0.2)`);
-                    gradient.addColorStop(1, `rgba(${blob.color.r}, ${blob.color.g}, ${blob.color.b}, 0)`);
-
-                    this.ctx.fillStyle = gradient;
-                    this.ctx.beginPath();
-                    this.ctx.arc(blob.x, blob.y, blob.radius, 0, Math.PI * 2);
-                    this.ctx.fill();
-                });
-
-                requestAnimationFrame(() => this.animate());
-            }
+        function updatePillPosition(element) {
+            if (!element) return;
+            const rect = element.getBoundingClientRect();
+            const navRect = element.parentElement.getBoundingClientRect();
+            activePill.style.width = `${rect.width}px`;
+            activePill.style.transform = `translateX(${rect.left - navRect.left}px)`;
+            
+            navItems.forEach(item => item.style.color = 'var(--nav-text)');
+            element.style.color = 'var(--pill-text)';
         }
 
-        // ============================================
-        // SCROLL INDICATOR FADE
-        // ============================================
-        const heroScroll = document.getElementById('hero-scroll');
-        let scrolled = false;
+        // Init pill
+        updatePillPosition(document.querySelector('.nav-item.active'));
 
+        // Scroll Spy for Nav
         window.addEventListener('scroll', () => {
-            if (!scrolled && window.scrollY > 50) {
-                scrolled = true;
-                heroScroll.classList.add('hidden');
-            }
-        }, { passive: true });
-
-        // ============================================
-        // NAVIGATION SLIDE IN
-        // ============================================
-        const nav = document.getElementById('nav');
-
-        // Show nav after hero animation completes
-        setTimeout(() => {
-            nav.classList.add('visible');
-        }, 1800);
-
-        // ============================================
-        // HERO PARALLAX EFFECT
-        // ============================================
-        const heroContent = document.getElementById('hero-content');
-
-        window.addEventListener('scroll', () => {
-            const scrollY = window.scrollY;
-            const heroHeight = window.innerHeight;
-
-            if (scrollY < heroHeight) {
-                const parallaxY = scrollY * 0.1;
-                const opacity = 1 - (scrollY / heroHeight) * 0.8;
-                heroContent.style.transform = `translateY(${parallaxY}px)`;
-                heroContent.style.opacity = Math.max(0, opacity);
-            }
-        }, { passive: true });
-
-        // ============================================
-        // INTERSECTION OBSERVER FOR REVEALS
-        // ============================================
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px 0px -100px 0px',
-            threshold: 0.1
-        };
-
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 200) { current = section.getAttribute('id'); }
+            });
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === `#${current}`) {
+                    item.classList.add('active');
+                    updatePillPosition(item);
                 }
             });
-        }, observerOptions);
+        }, { passive: true });
 
-        document.querySelectorAll('.reveal').forEach(el => {
-            revealObserver.observe(el);
+        window.addEventListener('resize', () => {
+            updatePillPosition(document.querySelector('.nav-item.active'));
         });
 
-        // ============================================
-        // 3D TILT EFFECT FOR PRICING CARDS
-        // ============================================
-        const tiltCards = document.querySelectorAll('[data-tilt]');
-
-        tiltCards.forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-
-                const rotateX = (y - centerY) / 150;
-                const rotateY = (centerX - x) / 150;
-
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.01)`;
-            });
-
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
-            });
+        // --- Liquid Glass Spotlight ---
+        const nav = document.getElementById('glass-nav');
+        nav.addEventListener('mousemove', (e) => {
+            const rect = nav.getBoundingClientRect();
+            nav.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+            nav.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
         });
 
-        // ============================================
-        // SMOOTH SCROLL FOR NAVIGATION
-        // ============================================
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
+        // --- Theme Toggle ---
+        const themeBtn = document.getElementById('theme-btn');
+        themeBtn.addEventListener('click', () => {
+            const isDark = document.body.getAttribute('data-theme') === 'dark';
+            document.body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+            setTimeout(() => updatePillPosition(document.querySelector('.nav-item.active')), 50);
         });
 
-        // ============================================
-        // COPY EMAIL FUNCTION
-        // ============================================
+        // --- Copy Email ---
         function copyEmail() {
-            const email = 'nickenoproduction@gmail.com';
-            navigator.clipboard.writeText(email).then(() => {
-                const btn = document.getElementById('copy-email-btn');
+            navigator.clipboard.writeText('nickenoproduction@gmail.com').then(() => {
+                const btn = document.getElementById('copy-btn');
                 btn.classList.add('copied');
                 btn.querySelector('span').textContent = 'Copied!';
-
                 setTimeout(() => {
                     btn.classList.remove('copied');
                     btn.querySelector('span').textContent = 'Copy Email';
@@ -1100,12 +480,17 @@
             });
         }
 
-        // ============================================
-        // INITIALIZE
-        // ============================================
-        new GradientAnimation();
+        // --- Scroll Reveal Animations ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
-
 </html>
-

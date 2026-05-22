@@ -1,32 +1,23 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nickeno | Producer from Sweden</title>
-    <meta name="description" content="Nickeno is a music producer from Sweden creating trap, supertrap, hyperpop, and experimental beats with clear license options.">
-    <script>
-        try {
-            const savedTheme = localStorage.getItem('nickeno-theme');
-            if (savedTheme === 'dark' || savedTheme === 'light') {
-                document.documentElement.setAttribute('data-theme', savedTheme);
-            }
-        } catch (error) {}
-    </script>
+    <title>nickeno | Beats, Licenses, Custom Work</title>
+    <meta name="description" content="nickeno music producer site with beat licenses, custom work, contact email, and SoundCloud link.">
     <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
     <a class="skip-link" href="#main">Skip to content</a>
 
+    <canvas class="signal-canvas" id="signal-canvas" aria-hidden="true"></canvas>
+    <div class="cursor-light" aria-hidden="true"></div>
+
     <header class="nav-wrap" aria-label="Primary navigation">
         <nav class="site-nav" id="glass-nav">
             <a href="#hero" class="nav-link active" aria-label="Home">
-                <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3.5 11.2 12 4l8.5 7.2"/><path d="M5.5 10v9.5h13V10"/><path d="M9.5 19.5v-6h5v6"/></svg>
+                <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12h16"/><path d="M12 4v16"/></svg>
                 <span>Home</span>
-            </a>
-            <a href="#about" class="nav-link" aria-label="About">
-                <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 10.8v5.2"/><path d="M12 8h.01"/></svg>
-                <span>About</span>
             </a>
             <a href="#pricing" class="nav-link" aria-label="Licenses">
                 <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 4.8h10a2 2 0 0 1 2 2v12.4l-3-1.8-3 1.8-3-1.8-3 1.8V6.8a2 2 0 0 1 2-2Z"/><path d="M9.5 9h5"/><path d="M9.5 12h5"/></svg>
@@ -36,149 +27,118 @@
                 <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4.5 7.2h15v9.6h-15Z"/><path d="m5 8 7 5 7-5"/></svg>
                 <span>Contact</span>
             </a>
-
-            <span class="nav-divider" aria-hidden="true"></span>
-
-            <button class="theme-toggle" id="theme-btn" type="button" aria-label="Switch to dark mode">
-                <svg class="theme-icon theme-moon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20 15.2A7.6 7.6 0 0 1 8.8 4a8.1 8.1 0 1 0 11.2 11.2Z"/></svg>
-                <svg class="theme-icon theme-sun" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.8v2.4"/><path d="M12 18.8v2.4"/><path d="m4.5 4.5 1.7 1.7"/><path d="m17.8 17.8 1.7 1.7"/><path d="M2.8 12h2.4"/><path d="M18.8 12h2.4"/><path d="m4.5 19.5 1.7-1.7"/><path d="m17.8 6.2 1.7-1.7"/></svg>
-            </button>
         </nav>
     </header>
 
     <main id="main">
-        <section id="hero" class="hero-section section-shell">
+        <section id="hero" class="hero-section section-shell" data-section>
+            <div class="hero-orbit" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
             <div class="hero-copy reveal">
-                <p class="eyebrow">Producer from Sweden</p>
-                <h1>Nickeno</h1>
-                <p class="hero-lede">Beats with color, bounce, and feeling. Trap, supertrap, hyperpop, and experimental sounds made for artists who want something that actually has a pulse.</p>
-                <p class="hero-signature">For voice notes, late-night hooks, and the songs you keep replaying before anyone else hears them.</p>
+                <p class="micro-label">01 / signal room</p>
+                <h1 class="wordmark" aria-label="nickeno">
+                    <svg viewBox="0 0 920 280" role="img" aria-labelledby="wordmark-title">
+                        <title id="wordmark-title">nickeno</title>
+                        <text class="wordmark-stroke" x="460" y="176" text-anchor="middle">nickeno</text>
+                        <text class="wordmark-fill" x="460" y="176" text-anchor="middle">nickeno</text>
+                        <path class="wordmark-flourish" d="M178 205 C330 236, 582 236, 742 204" />
+                    </svg>
+                </h1>
+                <p class="hero-line">Beats. Licenses. Custom work.</p>
                 <div class="hero-actions">
-                    <a class="button button-primary" href="#pricing">
+                    <a class="button button-primary" href="#pricing" data-magnetic>
+                        <span>Licenses</span>
                         <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
-                        View licenses
                     </a>
-                    <a class="button button-secondary" href="#contact">
+                    <a class="button button-secondary" href="#contact" data-magnetic>
+                        <span>Contact</span>
                         <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4.5 7.2h15v9.6h-15Z"/><path d="m5 8 7 5 7-5"/></svg>
-                        Work together
                     </a>
                 </div>
-                <div class="hero-note">
-                    <span>Trap</span>
-                    <span>Supertrap</span>
-                    <span>Hyperpop</span>
-                    <span>Experimental</span>
-                </div>
             </div>
         </section>
 
-        <section id="about" class="section-shell split-section">
-            <div class="section-heading reveal">
-                <p class="eyebrow">About</p>
-                <h2>A small world for loud ideas.</h2>
-            </div>
-            <div class="about-panel reveal">
-                <p>A producer from Sweden with a passion for creating unique thumping beats. The sound is sharp, colorful, and a little strange in the best way: made for hooks, late-night drafts, and songs that need their own atmosphere.</p>
-                <div class="tag-row" aria-label="Genres">
-                    <span>Hard drums</span>
-                    <span>Glossy melodies</span>
-                    <span>Clean licenses</span>
-                    <span>Custom work</span>
-                </div>
-            </div>
-        </section>
-
-        <section id="pricing" class="section-shell pricing-section">
+        <section id="pricing" class="section-shell pricing-section" data-section>
             <div class="section-heading centered reveal">
-                <p class="eyebrow">Licenses</p>
-                <h2>Licenses that feel clear, not corporate.</h2>
-                <p>Simple tiers, readable terms, and everything hosted here so artists can stay in the flow.</p>
+                <p class="micro-label">02 / licenses</p>
+                <h2>Four clear ways in.</h2>
             </div>
 
             <div class="pricing-grid">
-                <article class="license-card reveal">
-                    <div class="card-kicker">Starter</div>
+                <article class="license-card reveal" data-magnetic data-reveal-delay="60">
+                    <span class="card-index">01</span>
                     <h3>Basic Lease</h3>
                     <p class="price">200 SEK</p>
-                    <p class="conversion">$19 / &euro;18</p>
-                    <p class="tier-desc">Basic MP3/WAV, 100k streams, no radio.</p>
                     <ul class="mini-list">
-                        <li>Artist or creator use</li>
-                        <li>Credit required</li>
+                        <li>MP3/WAV</li>
+                        <li>100k streams</li>
                         <li>No Content ID</li>
                     </ul>
                     <a class="button button-card" href="licenses/basic/">View license</a>
                 </article>
 
-                <article class="license-card reveal">
-                    <div class="card-kicker">Release ready</div>
+                <article class="license-card reveal" data-magnetic data-reveal-delay="20">
+                    <span class="card-index">02</span>
                     <h3>Pro Lease</h3>
                     <p class="price">300 SEK</p>
-                    <p class="conversion">$28 / &euro;26</p>
-                    <p class="tier-desc">High-quality WAV, 500k streams, local radio.</p>
                     <ul class="mini-list">
-                        <li>24-bit WAV master</li>
-                        <li>Local radio rights</li>
-                        <li>Performance allowance</li>
+                        <li>24-bit WAV</li>
+                        <li>500k streams</li>
+                        <li>Local radio</li>
                     </ul>
                     <a class="button button-card" href="licenses/pro/">View license</a>
                 </article>
 
-                <article class="license-card featured reveal">
-                    <div class="card-kicker">Best value</div>
+                <article class="license-card featured reveal" data-magnetic data-reveal-delay="20">
+                    <span class="card-index">03</span>
                     <h3>Unlimited Lease</h3>
                     <p class="price">400 SEK</p>
-                    <p class="conversion">$37 / &euro;35</p>
-                    <p class="tier-desc">WAV + stems, unlimited streams, national radio.</p>
                     <ul class="mini-list">
-                        <li>Unlimited streaming</li>
-                        <li>Track stems included</li>
-                        <li>National broadcast rights</li>
+                        <li>WAV + stems</li>
+                        <li>Unlimited streams</li>
+                        <li>National radio</li>
                     </ul>
                     <a class="button button-card" href="licenses/unlimited/">View license</a>
                 </article>
 
-                <article class="license-card reveal">
-                    <div class="card-kicker">Full control</div>
+                <article class="license-card reveal" data-magnetic data-reveal-delay="60">
+                    <span class="card-index">04</span>
                     <h3>Exclusive Rights</h3>
                     <p class="price">500 SEK</p>
-                    <p class="conversion">$46 / &euro;44</p>
-                    <p class="tier-desc">Full ownership transfer. Beat removed from store.</p>
                     <ul class="mini-list">
-                        <li>Exclusive rights</li>
+                        <li>Full ownership</li>
                         <li>Stems included</li>
-                        <li>No new leases sold</li>
+                        <li>Beat removed</li>
                     </ul>
                     <a class="button button-card" href="licenses/exclusive/">View license</a>
                 </article>
             </div>
-
-            <div class="custom-band reveal">
-                <div>
-                    <p class="eyebrow">Custom Mix Tier</p>
-                    <h3>Need mixing, mastering, or a custom package?</h3>
-                    <p>Tell me what you are making. We can shape something that fits the song instead of forcing it into a box.</p>
-                </div>
-                <a class="button button-secondary" href="#contact">Contact me</a>
-            </div>
         </section>
 
-        <section id="contact" class="section-shell contact-section">
+        <section id="contact" class="section-shell contact-section" data-section>
             <div class="section-heading centered reveal">
-                <p class="eyebrow">Contact</p>
-                <h2>Send the idea while it is still glowing.</h2>
-                <p>Questions, custom work, license help, or beat inquiries all go through the same inbox.</p>
+                <p class="micro-label">03 / contact</p>
+                <h2>Send the idea.</h2>
             </div>
 
             <div class="contact-panel reveal">
                 <a class="email-link" href="mailto:nickenoproduction@gmail.com">
                     <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4.5 7.2h15v9.6h-15Z"/><path d="m5 8 7 5 7-5"/></svg>
-                    nickenoproduction@gmail.com
+                    <span>nickenoproduction@gmail.com</span>
                 </a>
-                <button class="button button-secondary" type="button" data-copy-email data-copy-value="nickenoproduction@gmail.com">
+                <button class="button button-secondary" type="button" data-copy-email data-copy-value="nickenoproduction@gmail.com" data-magnetic>
                     <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="8" y="8" width="11" height="11" rx="2"/><path d="M5 15V5h10"/></svg>
                     <span>Copy email</span>
                 </button>
+                <a class="button button-primary" href="https://soundcloud.com/nickeno" target="_blank" rel="noopener noreferrer" data-magnetic>
+                    <span>SoundCloud</span>
+                    <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+                </a>
             </div>
         </section>
     </main>
@@ -187,10 +147,12 @@
         <div class="footer-inner">
             <a class="footer-brand" href="#hero">nickeno</a>
             <div class="footer-links">
-                <a href="https://soundcloud.com/nickeno" target="_blank" rel="noopener noreferrer">SoundCloud</a>
-                <a href="mailto:nickenoproduction@gmail.com">Email</a>
+                <a href="licenses/basic/">Basic</a>
+                <a href="licenses/pro/">Pro</a>
+                <a href="licenses/unlimited/">Unlimited</a>
+                <a href="licenses/exclusive/">Exclusive</a>
             </div>
-            <p>&copy; 2026 nickeno. All rights reserved.</p>
+            <p>&copy; 2026 nickeno.</p>
         </div>
     </footer>
 

@@ -1,0 +1,32 @@
+This site uses the following third-party client-side libraries and font files.
+Local site HTML, CSS, JavaScript, audio, and the favicon are project files unless listed here.
+
+1. Inter
+Source: https://fonts.google.com/specimen/Inter
+Repository/license source: https://github.com/rsms/inter/blob/master/LICENSE.txt
+License: SIL Open Font License, Version 1.1
+Copyright: Copyright (c) 2016 The Inter Project Authors
+Use in this site: Loaded through Google Fonts for typography.
+
+2. Lenis 1.1.18
+Source: https://unpkg.com/lenis@1.1.18/dist/lenis.min.js
+Repository/license source: https://github.com/darkroomengineering/lenis/blob/main/LICENSE
+License: MIT License
+Copyright: Copyright (c) 2024 darkroom.engineering
+Use in this site: Smooth scrolling behavior.
+
+3. GSAP 3.12.5 and ScrollTrigger 3.12.5
+Source: https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js
+Source: https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js
+Repository/license source: https://github.com/greensock/GSAP
+License source: https://gsap.com/standard-license/
+License: Standard "No Charge" GSAP License
+Copyright: Copyright (c) 2008-2026, GreenSock. All rights reserved.
+Use in this site: Page transitions, scroll reveals, and interface animation.
+
+4. Three.js r128
+Source: https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js
+Repository/license source: https://github.com/mrdoob/three.js/blob/r128/LICENSE
+License: MIT License
+Copyright: Copyright (c) 2010-2021 three.js authors
+Use in this site: Optional hero WebGL visual layer.

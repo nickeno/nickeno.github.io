@@ -1,0 +1,158 @@
+
+
+.license-page[data-tier="basic"] { --tier-accent: rgba(244, 234, 216, 0.6); --tier-glow: rgba(244, 234, 216, 0.08); }
+.license-page[data-tier="pro"] { --tier-accent: rgba(210, 180, 120, 0.7); --tier-glow: rgba(210, 180, 120, 0.1); }
+.license-page[data-tier="unlimited"] { --tier-accent: rgba(210, 164, 95, 0.8); --tier-glow: rgba(210, 164, 95, 0.12); }
+.license-page[data-tier="exclusive"] { --tier-accent: rgba(245, 220, 180, 0.9); --tier-glow: rgba(245, 220, 180, 0.14); }
+
+.tier-signal {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    gap: 4px;
+    height: 32px;
+    margin: 24px 0 16px;
+    opacity: 0.6;
+}
+
+.tier-signal span {
+    width: 3px;
+    border-radius: 2px;
+    background: var(--tier-accent, rgba(244, 234, 216, 0.5));
+    animation: signalPulse 2s ease-in-out infinite alternate;
+}
+
+.tier-signal span:nth-child(1) { height: 40%; animation-delay: 0.1s; }
+.tier-signal span:nth-child(2) { height: 70%; animation-delay: 0.3s; }
+.tier-signal span:nth-child(3) { height: 100%; animation-delay: 0.5s; }
+.tier-signal span:nth-child(4) { height: 55%; animation-delay: 0.2s; }
+.tier-signal span:nth-child(5) { height: 30%; animation-delay: 0.4s; }
+
+@keyframes signalPulse {
+    0% { transform: scaleY(0.7); opacity: 0.5; }
+    100% { transform: scaleY(1.1); opacity: 1; }
+}
+
+.doc-progress {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--tier-accent, rgba(210,164,95,0.6)) calc(var(--progress, 0) * 100%), transparent calc(var(--progress, 0) * 100%));
+    z-index: 10;
+    border-radius: 0 0 var(--radius-card, 8px) 0;
+    transition: background 0.1s ease-out;
+}
+
+.license-pill, .eyebrow {
+    border-left: 2px solid var(--tier-accent);
+    padding-left: 8px;
+}
+
+.summary-price {
+    text-shadow: 0 0 16px var(--tier-glow);
+}
+
+.license-document h3 {
+    display: flex;
+    align-items: center;
+    border-top: 1px solid rgba(244, 234, 216, 0.08);
+    padding-top: 36px;
+    margin-top: 36px;
+}
+
+.license-document h3:first-of-type {
+    border-top: none;
+    padding-top: 0;
+}
+
+.license-document h3::before {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--tier-accent);
+    margin-right: 12px;
+    box-shadow: 0 0 8px var(--tier-accent);
+}
+
+.license-document li {
+    padding: 6px 10px;
+    margin-bottom: 4px;
+    border-left: 2px solid transparent;
+    transition: all 0.2s ease;
+    border-radius: 0 4px 4px 0;
+}
+
+.license-document li:hover {
+    border-left-color: var(--tier-accent);
+    background: var(--tier-glow);
+    color: var(--text);
+}
+
+.aside-panel {
+    background: linear-gradient(180deg, var(--tier-glow), rgba(244, 234, 216, 0.02));
+    border-left: 2px solid var(--tier-accent);
+}
+
+.aside-panel h2 {
+    color: var(--text);
+}
+
+.license-hero .reveal > * {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeUp 0.6s var(--ease) forwards;
+}
+
+.license-hero .reveal > *:nth-child(1) { animation-delay: 0.1s; }
+.license-hero .reveal > *:nth-child(2) { animation-delay: 0.2s; }
+.license-hero .reveal > *:nth-child(3) { animation-delay: 0.3s; }
+.license-hero .reveal > *:nth-child(4) { animation-delay: 0.4s; }
+.license-hero .reveal > *:nth-child(5) { animation-delay: 0.5s; }
+
+.license-hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    max-width: min(720px, 100%);
+    margin: 8px 0 0;
+    color: var(--text-muted);
+    font-size: clamp(0.76rem, 1.05vw, 0.92rem);
+    font-weight: 820;
+    text-transform: uppercase;
+}
+
+.license-hero-meta span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 34px;
+    padding: 0 12px;
+    border: 1px solid rgba(246, 240, 226, 0.12);
+    border-radius: 999px;
+    background: rgba(246, 240, 226, 0.045);
+    color: rgba(246, 240, 226, 0.72);
+}
+
+@keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tier-signal span { animation: none; }
+    .license-hero .reveal > * { animation: none; opacity: 1; transform: none; }
+}
+
+@media (max-width: 760px) {
+    .license-hero-meta {
+        gap: 8px;
+    }
+
+    .license-hero-meta span {
+        min-height: 32px;
+        padding: 0 10px;
+    }
+}
